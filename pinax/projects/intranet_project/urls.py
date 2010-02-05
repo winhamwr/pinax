@@ -5,7 +5,7 @@ from django.views.generic.simple import direct_to_template
 from django.contrib import admin
 admin.autodiscover()
 
-from account.openid_consumer import PinaxConsumer
+from pinax.apps.account.openid_consumer import PinaxConsumer
 
 
 
@@ -17,19 +17,19 @@ urlpatterns = patterns("",
         "template": "homepage.html",
     }, name="home"),
     
-    url(r"^admin/invite_user/$", "signup_codes.views.admin_invite_user", name="admin_invite_user"),
-    url(r"^account/signup/$", "signup_codes.views.signup", name="acct_signup"),
+    url(r"^admin/invite_user/$", "pinax.apps.signup_codes.views.admin_invite_user", name="admin_invite_user"),
+    url(r"^account/signup/$", "pinax.apps.signup_codes.views.signup", name="acct_signup"),
     
-    (r"^account/", include("account.urls")),
+    (r"^account/", include("pinax.apps.account.urls")),
     (r"^openid/(.*)", PinaxConsumer()),
-    (r"^profiles/", include("basic_profiles.urls")),
+    (r"^profiles/", include("pinax.apps.basic_profiles.urls")),
     (r"^notices/", include("notification.urls")),
     (r"^announcements/", include("announcements.urls")),
-    (r"^tagging_utils/", include("tagging_utils.urls")),
+    (r"^tagging_utils/", include("pinax.apps.tagging_utils.urls")),
     (r"^attachments/", include("attachments.urls")),
     (r"^bookmarks/", include("bookmarks.urls")),
-    (r"^tasks/", include("tasks.urls")),
-    (r"^topics/", include("topics.urls")),
+    (r"^tasks/", include("pinax.apps.tasks.urls")),
+    (r"^topics/", include("pinax.apps.topics.urls")),
     (r"^comments/", include("threadedcomments.urls")),
     (r"^wiki/", include("wiki.urls")),
     

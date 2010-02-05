@@ -4,12 +4,12 @@ from django.template import RequestContext
 from tagging.models import Tag, TaggedItem
 from wiki.models import Article as WikiArticle
 
-from blog.models import Post
-from photos.models import Image
-from projects.models import Project, Task
-from projects.models import Topic as ProjectTopic
-from tribes.models import Tribe
-from tribes.models import Topic as TribeTopic
+from pinax.apps.blog.models import Post
+from pinax.apps.photos.models import Image
+from pinax.apps.projects.models import Project, Task
+from pinax.apps.projects.models import Topic as ProjectTopic
+from pinax.apps.tribes.models import Tribe
+from pinax.apps.tribes.models import Topic as TribeTopic
 
 
 

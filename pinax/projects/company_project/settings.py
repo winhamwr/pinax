@@ -118,7 +118,8 @@ TEMPLATE_CONTEXT_PROCESSORS = [
 ]
 
 INSTALLED_APPS = [
-    # included
+    # Django
+    "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
     "django.contrib.sessions",
@@ -127,14 +128,15 @@ INSTALLED_APPS = [
     "django.contrib.humanize",
     "django.contrib.webdesign",
     
-    # pinax
+    "pinax.templatetags",
+    
+    # external
     "staticfiles",
     "biblion",
     
-    # local
+    # Pinax
     
-    # admin
-    "django.contrib.admin",
+    # project
 ]
 
 MESSAGE_STORAGE = "django.contrib.messages.storage.session.SessionStorage"
