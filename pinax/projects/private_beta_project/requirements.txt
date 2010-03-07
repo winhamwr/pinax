@@ -25,3 +25,6 @@ django-uni-form==0.7.0
 django-wikiapp==0.2.0
 template_utils==0.4p2
 django-staticfiles==0.2.0
+django_compressor==0.5.3
+BeautifulSoup
+

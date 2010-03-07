@@ -2,3 +2,5 @@
 --find-links=http://pypi2.pinaxproject.com
 
 django-staticfiles==0.2.0
+django_compressor==0.5.3
+BeautifulSoup

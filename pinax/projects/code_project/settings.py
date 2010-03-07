@@ -163,6 +163,7 @@ INSTALLED_APPS = [
     "django_markup",
     "django_filters",
     "staticfiles",
+    "compressor",
     "debug_toolbar",
     "tagging_ext",
     
@@ -223,6 +224,21 @@ LOGIN_REDIRECT_URLNAME = "what_next"
 DEBUG_TOOLBAR_CONFIG = {
     "INTERCEPT_REDIRECTS": False,
 }
+
+# tells Pinax to actually compress or not
+COMPRESS = not DEBUG
+
+# storage engine to be used during compression
+COMPRESS_STORAGE = 'staticfiles.storage.StaticFileStorage'
+
+# The URL that linked media will be read from and compressed media will be written to.
+COMPRESS_URL = STATIC_URL
+
+# The absolute file path that linked media will be read from and compressed media will be written to.
+COMPRESS_ROOT = STATIC_ROOT
+
+# subdirectory of COMPRESS_ROOT to store the cached media files in
+COMPRESS_OUTPUT_DIR = 'cache'
 
 # local_settings.py can be used to override environment-specific settings
 # like database and email that differ between development and production.
