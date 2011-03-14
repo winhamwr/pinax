@@ -113,6 +113,7 @@ def setup_test_environment():
         "SITE_NAME": "Pinax",
         "BIBLION_SECTIONS": [],
         "AUTH_PROFILE_MODULE": "profiles.Profile",
+        "ACCOUNT_OPEN_SIGNUP": True,
     })
 
 
