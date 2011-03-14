@@ -49,7 +49,7 @@ def build_app_list(projects):
     Given a list of projects return a unique list of apps.
     """
     apps = set()
-    
+
     for project in projects:
         setup_project(project)
         settings._setup()
@@ -57,7 +57,7 @@ def build_app_list(projects):
             if app in EXTRA_APP_ALIASES:
                 apps.update(EXTRA_APP_ALIASES[app])
             apps.add(app)
-    
+
     return list(apps)
 
 
@@ -71,13 +71,13 @@ def build_project_app_paths(projects):
 
 def setup_test_environment():
     apps = build_app_list(PINAX_PROJECTS)
-    
+
     # setup path for all project apps/
     sys.path = build_project_app_paths(PINAX_PROJECTS) + sys.path[:]
-    
+
     # reset settings
     settings._wrapped = None
-    
+
     # set up settings for running tests for all apps
     settings.configure(**{
         "DATABASE_ENGINE": "sqlite3",
@@ -92,12 +92,12 @@ def setup_test_environment():
         ],
         "INSTALLED_APPS": apps,
         "LOGIN_URL": "/account/login/",
-        
+
         "TEMPLATE_DIRS": [
             os.path.join(os.path.dirname(__file__), "templates"),
             os.path.join(os.path.dirname(pinax.__file__), "templates", "default"),
         ],
-        
+
         # these settings are currently required to support Pinax default
         # templates.
         "TEMPLATE_CONTEXT_PROCESSORS": [
@@ -111,14 +111,15 @@ def setup_test_environment():
         ],
         "CONTACT_EMAIL": "feedback@example.com",
         "SITE_NAME": "Pinax",
+        "BIBLION_SECTIONS": [],
     })
 
 
 def main():
-    
+
     usage = "%prog [options] [app app app]"
     parser = optparse.OptionParser(usage=usage)
-    
+
     parser.add_option("-v", "--verbosity",
         action = "store",
         dest = "verbosity",
@@ -133,9 +134,9 @@ def main():
         default = False,
         help = "hook in coverage during test suite run and save out results",
     )
-    
+
     options, args = parser.parse_args()
-    
+
     if options.coverage:
         try:
             import coverage
@@ -147,11 +148,11 @@ def main():
             cov.start()
     else:
         cov = None
-    
+
     setup_test_environment()
-    
+
     call_command("test", verbosity=int(options.verbosity), *args)
-    
+
     if cov:
         cov.stop()
         cov.save()
