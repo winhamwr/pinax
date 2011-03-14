@@ -63,6 +63,18 @@ to reset their password.
 
     CONTACT_EMAIL = 'support@example.com'
 
+
+``ACCOUNT_ERRORMSG_RESETPASSWORD_UNVERIFIEDEMAIL``
+-----------------------
+
+**Optional**.  Validation message given to users if they attempt to password
+reset an unverified email address.
+
+::
+
+    ACCOUNT_ERRORMSG_RESETPASSWORD_UNVERIFIEDEMAIL = _("E-mail address not verified for any user account"))
+
+
 Named URLs
 ==========
 
